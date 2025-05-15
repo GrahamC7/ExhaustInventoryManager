@@ -1,45 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<html xmlns:th="https://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Part Form</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-<h1>Inhouse Part Detail</h1>
-<form th:action="@{/parts/inhouse}" th:object="${inhousepart}" method="POST">
+<div th:replace="fragments/header :: header"></div>
 
-<!-- Add hidden form field to handle update -->
-    <p><input type="hidden" th:field="*{id}"/></p>
+<h2 class="mb-4">Add Inhouse Part</h2>
+<form th:action="@{/parts/inhouse}" th:object="${inhousepart}" method="POST" class="mb-5">
 
-<p><input type="text" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4"/></p>
-
-<p><input type="text" path="price" th:field="*{price}" placeholder= "Price" class="form-control mb-4 col-4"/></p>
-<p th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</p>
-
-<p><input type="text" path="inv" th:field="*{inv}" placeholder="Inventory" class="form-control mb-4 col-4"/></p>
-    <p th:if="${#fields.hasErrors('inv')}" th:errors="*{inv}">Inventory Error</p>
-
-    <p><input type="text" th:field="*{partId}" placeholder="Part ID" class="form-control mb-4 col-4"/></p>
-
-    <p><input type="text" th:field="*{minInv}" placeholder="Minimum Inventory" class="form-control mb-4 col-4"/></p>
-    <p th:if="${#fields.hasErrors('minInv')}" th:errors="*{minInv}">Minimum Inventory Error</p>
-
-    <p><input type="text" th:field="*{maxInv}" placeholder="Maximum Inventory" class="form-control mb-4 col-4"/></p>
-    <p th:if="${#fields.hasErrors('maxInv')}" th:errors="*{maxInv}">Maximum Inventory Error</p>
-
-    <div th:if="${#fields.hasErrors()}">
-        <ul>
-            <li th:each="err : ${#fields.allErrors()}" th:text="${err}" class="error"/>
-        </ul>
+    <div class="mb-3">
+        <label for="name" class="form-label">Part Name</label>
+        <input type="text" th:field="*{name}" class="form-control" id="name" required />
     </div>
 
-<p><input type="submit" value="Submit" /></p>
-</form>
-<p><errors path="price" cssClass=""error/><p>
+    <div class="mb-3">
+        <label for="price" class="form-label">Price ($)</label>
+        <input type="number" step="0.01" th:field="*{price}" class="form-control" id="price" required />
+    </div>
 
-<a href="http://localhost:8080/">Link
-    to Home</a>
-</body>
-</html>
+    <div class="mb-3">
+        <label for="inv" class="form-label">Inventory</label>
+        <input type="number" th:field="*{inv}" class="form-control" id="inv" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="min_inv" class="form-label">Min Inventory</label>
+        <input type="number" th:field="*{minInv}" class="form-control" id="min_inv" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="max_inv" class="form-label">Max Inventory</label>
+        <input type="number" th:field="*{maxInv}" class="form-control" id="max_inv" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="part_id" class="form-label">Part ID</label>
+        <input type="text" th:field="*{partId}" class="form-control" id="part_id" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Save Part</button>
+</form>
+
+<div th:replace="fragments/footer :: footer"></div>
