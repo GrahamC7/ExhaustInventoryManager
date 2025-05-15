@@ -38,20 +38,21 @@ ExhaustInventoryManager is a full-stack Java web application for managing perfor
 
 ### Installation
 
-git clone https://github.com/GrahamC7/ExhaustInventoryManager.git
-cd ExhaustInventoryManager
-mvn clean install
-mvn spring-boot:run
+- git clone https://github.com/GrahamC7/ExhaustInventoryManager.git
+- cd ExhaustInventoryManager
+- mvn clean install
+- mvn spring-boot:run
 
 ---
 
 ### Open in browser:
-http://localhost:8080
+- http://localhost:8080
 
 ### Optional: H2 Console
-Navigate to:
-http://localhost:8080/h2-console
-Use JDBC URL: jdbc:h2:file:~/performance-exhaust-parts-db
+- Navigate to:
+- http://localhost:8080/h2-console
+- Use JDBC URL: 
+- jdbc:h2:file:~/performance-exhaust-parts-db
 
 ---
 
